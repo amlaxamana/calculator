@@ -25,7 +25,7 @@ export default function App() {
   const [operand, setOperand] = useState("");
   const [operator, setOperator] = useState("");
   const [firstOperand, setFirstOperand] = useState("");
-  const [justCalculated, setJustCalculated] = useState(false);  // NEW STATE
+  const [justCalculated, setJustCalculated] = useState(false);  
 
   const fullName = "Aaron Laxamana";
   const section = "IT3A";
@@ -34,7 +34,6 @@ export default function App() {
     let newOperand = operand;
 
     if (justCalculated) {
-      // Reset operand on new input after calculation
       newOperand = label;
       setJustCalculated(false);
     } else if (operand === "0" && label !== "0") {
@@ -91,7 +90,7 @@ export default function App() {
       setOperand(result.toString());
       setOperator("");
       setFirstOperand("");
-      setJustCalculated(true);  // SET flag here
+      setJustCalculated(true);
     }
   };
 
