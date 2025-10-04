@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: #f4f4f4; 
+  background: #34656D;
   padding: 0 20px;
   max-width: 580px;
   margin: 0 auto;
@@ -14,7 +14,7 @@
 .header {
   font-size: 30px;
   font-weight: bolder;
-  color: #1a3b6a; 
+  color: #F5F5F0; 
   margin-bottom: 20px;
   text-align: center;
   width: 100%;
