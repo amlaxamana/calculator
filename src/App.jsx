@@ -23,9 +23,9 @@ function Button({ label, className = "", onClick }) {
 export default function App() {
   const [display, setDisplay] = useState("0");
   const [operand, setOperand] = useState("");
-  const [operator, setOperator] = useState("");
-  const [firstOperand, setFirstOperand] = useState("");
-  const [justCalculated, setJustCalculated] = useState(false);  
+  const [Operation, setOperation] = useState("");
+  const [InitialOp, setInitialOp] = useState("");
+  const [Computed, setComputed] = useState(false);
 
   const fullName = "Aaron Laxamana";
   const section = "IT3A";
@@ -33,9 +33,9 @@ export default function App() {
   const handleNumberClick = (label) => {
     let newOperand = operand;
 
-    if (justCalculated) {
+    if (Computed) {
       newOperand = label;
-      setJustCalculated(false);
+      setComputed(false);
     } else if (operand === "0" && label !== "0") {
       newOperand = label;
     } else {
@@ -48,55 +48,55 @@ export default function App() {
 
   const handleOperatorClick = (op) => {
     if (operand !== "") {
-      setFirstOperand(operand);
-      setOperator(op);
+      setInitialOp(operand);
+      setOperation(op);
       setOperand("");
       setDisplay(op);
-      setJustCalculated(false);
+      setComputed(false);
     }
   };
 
   const handleClearClick = () => {
     setOperand("");
-    setOperator("");
-    setFirstOperand("");
+    setOperation("");
+    setInitialOp("");
     setDisplay("0");
-    setJustCalculated(false);
+    setComputed(false);
   };
 
   const handleEqualsClick = () => {
-    if (firstOperand !== "" && operator !== "" && operand !== "") {
+    if (InitialOp !== "" && Operation !== "" && operand !== "") {
       let result = 0;
-      const a = parseFloat(firstOperand);
+      const a = parseFloat(InitialOp);
       const b = parseFloat(operand);
-      if (operator === "+") {
+      if (Operation === "+") {
         result = a + b;
-      } else if (operator === "-") {
+      } else if (Operation === "-") {
         result = a - b;
-      } else if (operator === "*") {
+      } else if (Operation === "*") {
         result = a * b;
-      } else if (operator === "÷") {
+      } else if (Operation === "÷") {
         if (b === 0) {
           setDisplay("Error");
           setOperand("");
-          setOperator("");
-          setFirstOperand("");
-          setJustCalculated(false);
+          setOperation("");
+          setInitialOp("");
+          setComputed(false);
           return;
         }
         result = a / b;
       }
       setDisplay(result.toString());
       setOperand(result.toString());
-      setOperator("");
-      setFirstOperand("");
-      setJustCalculated(true);
+      setOperation("");
+      setInitialOp("");
+      setComputed(true);
     }
   };
 
   const handleSurnameClick = () => {
     setDisplay(fullName);
-    setJustCalculated(false);
+    setComputed(false);
   };
 
   return (
